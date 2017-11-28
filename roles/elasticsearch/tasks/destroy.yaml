@@ -4,3 +4,5 @@
   command: docker rm -f elasticsearch
   ignore_errors: true
 
+- name: Remove elasticsearch data
+  file: path=/data/elasticsearch state=absent

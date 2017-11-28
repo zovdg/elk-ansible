@@ -3,3 +3,6 @@
 - name: Stop kafka container
   command: docker rm -f kafka
   ignore_errors: true
+
+- name: Remove kafka data
+  file: path=/data/kafka state=absent

@@ -46,11 +46,11 @@ case "$1" in
 	;;
 (destroy)
 	ACTION="Destroy elk containers"
-	EXTAR_OPTS="$EXTRA_OPTS -e action=destroy"
+	EXTAR_OPTS="$EXTRA_OPTS -e cmd=destroy"
 	;;
 (deploy)
 	ACTION="Start elk containers"
-	EXTAR_OPTS="$EXTRA_OPTS -e action=deploy"
+	EXTAR_OPTS="$EXTRA_OPTS -e cmd=deploy"
 	;;
 (*) 
 	usage

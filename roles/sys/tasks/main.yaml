@@ -1,0 +1,11 @@
+---
+
+- name: Set selinux to permissive
+  selinux: state=disabled
+
+- name: Config sysctl
+  sysctl: name="net.ipv4.ip_forward" value=1 sysctl_set=yes state=present reload=yes
+
+- name: Disable and stop firewalld service
+  service: name=firewalld state=stopped enabled=no
+

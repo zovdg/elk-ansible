@@ -3,3 +3,6 @@
 - name: Stop zookeeper container
   command: docker rm -f zookeeper
   ignore_errors: true
+
+- name: Remove zookeeper data
+  file: path=/data/zookeeper state=absent

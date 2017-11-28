@@ -63,4 +63,9 @@ $ ./elk destory
 ```
 
 
+## 3. notes
+
+> systemctl disable firewalld
+> systemctl stop firewalld
+> setenforce 0
 
