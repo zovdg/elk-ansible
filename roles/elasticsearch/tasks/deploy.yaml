@@ -1,0 +1,21 @@
+---
+
+- name: Start elasticsearch container
+  docker_container:
+      name: elasticsearch
+      image: "{{ elasticsearch_img }}"
+      command: 
+          - elasticsearch 
+          - -Des.insecure.allow.root=true
+          - -Des.cluster.name=es-server 
+          - -Des.http.port=9200
+          - -Des.transport.tcp.port=9300 
+          - -Des.network.host={{ inventory_hostname }} 
+          - -Des.discovery.zen.ping.unicast.hosts={% for node in play_hosts if node != inventory_hostname %}{{node}}:9300{% if not loop.last %},{% endif %}{% endfor %}
+      network_mode: host
+      privileged: true
+      restart_policy: always
+      state: started
+      volumes:
+          - /data/elasticsearch:/usr/share/elasticsearch/data:rw
+

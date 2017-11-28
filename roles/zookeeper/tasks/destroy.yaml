@@ -1,0 +1,5 @@
+---
+
+- name: Stop zookeeper container
+  command: docker rm -f zookeeper
+  ignore_errors: true

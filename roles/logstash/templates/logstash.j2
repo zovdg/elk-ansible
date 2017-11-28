@@ -1,0 +1,2 @@
+ES_HOSTS=[{% for node in groups['elasticsearch'] %}"{{node}}:9200"{% if not loop.last %},{% endif %}{% endfor %}]
+ZK_HOSTS={% for node in groups['zookeeper'] %}{{node}}:2181{% if not loop.last %},{% endif %}{% endfor %}

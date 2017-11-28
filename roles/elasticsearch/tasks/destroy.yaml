@@ -1,0 +1,6 @@
+---
+
+- name: Stop elasticsearch container
+  command: docker rm -f elasticsearch
+  ignore_errors: true
+

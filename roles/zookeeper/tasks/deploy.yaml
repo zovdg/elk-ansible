@@ -1,0 +1,18 @@
+---
+
+- name: Start zookeeper container
+  docker_container:
+      name: zookeeper
+      image: "{{ zookeeper_img }}"
+      network_mode: host
+      privileged: true
+      restart_policy: always
+      state: started
+      env:
+          MASTERIPS: "{% for node in play_hosts %}{{node}}:2888:3888{% if not loop.last %},{% endif %}{% endfor %}"
+          ZOO_IP: "{{ inventory_hostname }}"
+          ZOO_PORT: "2181"
+          MYID: "{{ inventory_hostname.split('.')[3] }}"
+          ZOO_TICK_TIME: "10000"
+      volumes:
+          - /data/zookeeper:/data:rw

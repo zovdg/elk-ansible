@@ -1,0 +1,5 @@
+---
+
+- name: Stop logstash container
+  command: docker rm -f logstash
+  ignore_errors: true

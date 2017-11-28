@@ -1,0 +1,9 @@
+
+image_repo_addr: "172.24.6.236:5000"
+
+elasticsearch_img: "{{ image_repo_addr }}/dcos-elasticsearch:2"
+zookeeper_img: "{{ image_repo_addr }}/dcos-zookeeper:v3.4.9"
+kafka_img: "{{ image_repo_addr }}/dcos-kafka:v0.10.1"
+logstash_img: "{{ image_repo_addr }}/dcos-logstash:openshift"
+kibana_img: "{{image_repo_addr}}/dcos-kibana:v4.6"
+

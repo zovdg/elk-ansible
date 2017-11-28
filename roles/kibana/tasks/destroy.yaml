@@ -1,0 +1,5 @@
+---
+
+- name: Stop kibana container
+  command: docker rm -f kibana
+  ignore_errors: true

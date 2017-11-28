@@ -1,0 +1,5 @@
+---
+
+- name: Stop kafka container
+  command: docker rm -f kafka
+  ignore_errors: true

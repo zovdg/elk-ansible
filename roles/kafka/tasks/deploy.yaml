@@ -1,0 +1,22 @@
+---
+
+- name: Start kafka container
+  docker_container:
+      name: kafka
+      image: "{{ kafka_img }}"
+      network_mode: host
+      privileged: true
+      restart_policy: always
+      state: started
+      env:
+          KAFKA_LISTENERS: "PLAINTEXT://{{ inventory_hostname }}:9092"
+          KAFKA_PORT: "9092"
+          KAFKA_ADVERTISED_PORT: "9092"
+          KAFKA_ADVERTISED_LISTENERS: "PLAINTEXT://{{ inventory_hostname }}:9092"
+          KAFKA_ADVERTISED_HOST_NAME: "{{ inventory_hostname }}"
+          KAFKA_ZOOKEEPER_CONNECT: "{% for node in groups['zookeeper'] %}{{node}}:2181{% if not loop.last %},{% endif %}{% endfor %}"
+          KAFKA_NUM_PARTITIONS: "3"
+          KAFKA_DEFAULT_REPLICATION_FACTOR: "2"
+          KAFKA_LOG_RETENTION_HOURS: "72"
+      volumes:
+          - /data/kafka:/kafka

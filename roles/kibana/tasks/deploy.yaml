@@ -1,0 +1,13 @@
+---
+
+- name: Start kibana container
+  docker_container:
+      name: kibana
+      image: "{{ kibana_img }}"
+      restart_policy: always
+      state: started
+      ports:
+          - "5601:5601"
+      env:
+          ELASTICSEARCH_URL: "http://{{ groups['elasticsearch'][0] }}:9200"
+

@@ -1,0 +1,22 @@
+
+[master]
+172.24.4.181 ansible_ssh_user=root ansible_ssh_pass=dnt.com
+172.24.4.182 ansible_ssh_user=root ansible_ssh_pass=dnt.com
+172.24.4.183 ansible_ssh_user=root ansible_ssh_pass=dnt.com
+
+
+[zookeeper:children]
+master
+
+[kafka:children]
+master
+
+[elasticsearch:children]
+master
+
+[logstash:children]
+master
+
+[kibana]
+172.24.4.181 ansible_ssh_user=root ansible_ssh_pass=dnt.com
+

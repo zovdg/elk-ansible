@@ -1,0 +1,14 @@
+---
+
+- name: Copy logstash env file
+  template: src=logstash.j2 dest=/etc/sysconfig/logstash mode=0644
+
+- name: Start logstash container
+  docker_container:
+      name: logstash
+      image: "{{ logstash_img }}"
+      network_mode: host
+      privileged: true
+      restart_policy: always
+      env_file: "/etc/sysconfig/logstash"
+

@@ -1,0 +1,50 @@
+---
+
+- name: Gather facts for all hosts
+  hosts: all
+  gather_facts: false
+  serial: '{{ serial|default("0") }}'
+  tasks:
+      - setup:
+  tags: always
+
+- name: Setup elasticsearch
+  hosts: elasticsearch
+  gather_facts: false
+  serial: '{{ serial|default("0") }}'
+  roles:
+      - elasticsearch
+  tags: elasticsearch
+
+- name: Setup zookeeper
+  hosts: zookeeper
+  gather_facts: false
+  serial: '{{ serial|default("0") }}'
+  roles:
+      - zookeeper
+  tags: zookeeper
+
+- name: Setup kafka
+  hosts: kafka
+  gather_facts: false
+  serial: '{{ serial|default("0") }}'
+  roles:
+      - kafka
+  tags: kafka
+
+- name: Setup logstash
+  hosts: logstash
+  gather_facts: false
+  serial: '{{ serial|default("0") }}'
+  roles:
+      - logstash
+  tags: logstash
+
+- name: Setup kibana
+  hosts: kibana
+  gather_facts: false
+  serial: '{{ serial|default("0") }}'
+  roles:
+      - kibana
+  tags: kibana
+
