@@ -1,9 +1,9 @@
 
 # elk-ansible
 
-## 1. inventory/hosts config
+## 1. `inventory/hosts` config
 
-install design:
+1) make a install design:
 
 | host         | install components                            |
 | ------------ | --------------------------------------------- |
@@ -11,7 +11,8 @@ install design:
 | 172.24.4.182 | elasticsearch zookeeper kafka logstash        |
 | 172.24.4.183 | elasticsearch zookeeper kafka logstash        |
 
-hosts config:
+2) config hosts file (`inventory/hosts` in current dir):
+
 ```
 [master]
 172.24.4.181 ansible_ssh_user=root ansible_ssh_pass=dnt.com
@@ -33,7 +34,6 @@ master
 [kibana]
 172.24.4.181 ansible_ssh_user=root ansible_ssh_pass=dnt.com
 ```
-
 
 ## 2. usage example
 
