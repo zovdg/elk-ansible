@@ -4,6 +4,7 @@
 ## 1. inventory/hosts config
 
 install design:
+
 | host         | install components                            |
 | ------------ | --------------------------------------------- |
 | 172.24.4.181 | elasitcsearch zookeeper kafka logstash kibana |
