@@ -1,0 +1,19 @@
+---
+
+- name: Gather facts for all hosts
+  hosts: all
+  gather_facts: false
+  serial: '{{ serial|default("0") }}'
+  tasks:
+      - setup:
+  tags: always
+
+- name: Config system
+  hosts: all
+  gather_facts: false
+  serial: '{{ serial|default("0") }}'
+  roles:
+      - { role: sys,
+          tags: sys,
+          when: cmd == "sys" }
+

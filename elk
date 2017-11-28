@@ -13,6 +13,7 @@ Commands:
 	list                       List all modules
 	deploy                     Deploy elk
 	destroy                    Destroy elk
+	sys                        Config system(stop firewall/selinux etc)
 EOF
 }
 
@@ -51,6 +52,13 @@ case "$1" in
 (deploy)
 	ACTION="Start elk containers"
 	EXTAR_OPTS="$EXTRA_OPTS -e cmd=deploy"
+	;;
+(sys)
+	ACTION="Config system"
+	EXTAR_OPTS="$EXTRA_OPTS -e cmd=sys"
+	echo $ACTION
+	ansible-playbook -i inventory/hosts sys.yaml $EXTAR_OPTS
+	exit 0
 	;;
 (*) 
 	usage
